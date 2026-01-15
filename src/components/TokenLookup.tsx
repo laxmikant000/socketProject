@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getTokenInfo, getBinanceTickerFromAddress, CHAIN_NAMES, CHAIN_PLATFORMS } from '../services/tokenService';
+import { getTokenInfo, getBinanceTickerFromAddress, CHAIN_NAMES } from '../services/tokenService';
 import './TokenLookup.css';
 
 export default function TokenLookup() {
