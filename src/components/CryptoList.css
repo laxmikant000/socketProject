@@ -1,0 +1,274 @@
+:root {
+  --bg-color: #0f1115;
+  --card-bg: #1a1d24;
+  --text-primary: #ffffff;
+  --text-secondary: #848e9c;
+  --accent-green: #0ecb81;
+  --accent-red: #f6465d;
+  --border-radius: 16px;
+  --padding: 16px;
+}
+
+.crypto-container {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.market-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  width: 100%;
+}
+
+.market-left-panel {
+  flex: 0 0 400px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-color);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.market-right-panel {
+  flex: 1;
+  background-color: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--padding);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+}
+
+.header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.crypto-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: var(--padding);
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Custom Scrollbar */
+.crypto-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.crypto-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.crypto-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.crypto-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.crypto-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--card-bg);
+  padding: 16px;
+  border-radius: var(--border-radius);
+  transition: transform 0.2s ease;
+}
+
+.crypto-item:active {
+  transform: scale(0.98);
+}
+
+.coin-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.coin-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #2b3139;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.coin-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.coin-name-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.coin-symbol {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.coin-name {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.price-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.current-price {
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.price-change {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.text-green {
+  color: var(--accent-green);
+}
+
+.text-red {
+  color: var(--accent-red);
+}
+
+.arrow {
+  font-size: 12px;
+}
+
+.explanation-section {
+  display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .market-left-panel {
+    flex: 0 0 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .market-layout {
+    flex-direction: column;
+  }
+
+  .market-left-panel {
+    flex: 1;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .market-right-panel {
+    display: none;
+  }
+
+  .header {
+    padding: 12px var(--padding);
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .crypto-list {
+    padding: 12px var(--padding);
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 10px 12px;
+  }
+
+  .header h1 {
+    font-size: 18px;
+  }
+
+  .crypto-list {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .crypto-item {
+    padding: 12px;
+  }
+
+  .coin-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .coin-symbol {
+    font-size: 14px;
+  }
+
+  .coin-name {
+    font-size: 11px;
+  }
+
+  .current-price {
+    font-size: 14px;
+  }
+
+  .price-change {
+    font-size: 11px;
+  }
+}
+
+/* Animation for price update */
+@keyframes flash-green {
+  0% { background-color: rgba(14, 203, 129, 0.2); }
+  100% { background-color: var(--card-bg); }
+}
+
+@keyframes flash-red {
+  0% { background-color: rgba(246, 70, 93, 0.2); }
+  100% { background-color: var(--card-bg); }
+}
+
+.flash-green {
+  animation: flash-green 0.5s ease-out;
+}
+
+.flash-red {
+  animation: flash-red 0.5s ease-out;
+}
